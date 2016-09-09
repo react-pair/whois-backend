@@ -1,0 +1,13 @@
+var express = require('./config/express');
+var mongoose = require('./config/mongoose');
+
+var db = mongoose();
+var app = express();
+
+app.set('port', (process.env.PORT || 3333));
+
+app.listen(app.get('port'), function() {
+  console.log('Express server is running on localhost:', app.get('port'));
+});
+
+module.exports = app;
