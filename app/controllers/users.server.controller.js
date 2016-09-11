@@ -14,17 +14,17 @@ module.exports = {
       if (err) {
         return next(err);
       } else {
-        res.json(user);
-        redirect('/:user_id');
+        res.redirect('/' + user._id);
       }
     });
   },
 
   show_profile: function(req, res, err) {
     var user_id = req.params.id;
+    console.log(user_id);
 
-    if(User.find(id)) {
-      // render profile details on namecard
+    if(User.find(user_id)) {
+      res.send('goodbye muthafuckers');
     } else {
       next(err);
     }

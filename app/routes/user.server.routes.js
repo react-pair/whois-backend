@@ -3,6 +3,10 @@ module.exports = function(app) {
 
   // restful USER routes
 
+  app.get('/', function(req, res) {
+    res.send('hello');
+  });
+
   // signup page
   app.route('/signup')
      .get(usersController.render_signup_form)
