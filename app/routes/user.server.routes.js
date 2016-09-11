@@ -10,7 +10,7 @@ module.exports = function(app) {
 
   // profile page of individual user
   // app.get('/:user_id', usersController.show_profile);
-  //
+
   // // primary friends list of individual user
   // app.get('/:user_id/contacts', usersController.show_pri_friends);
   //
