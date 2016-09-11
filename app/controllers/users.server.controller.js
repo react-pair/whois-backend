@@ -11,13 +11,23 @@ module.exports = {
   save_user: function(req, res, next) {
     var user = new User(req.body);
     user.save (function(err) {
-      if (err) return next(err);
-      res.json(user);
+      if (err) {
+        return next(err);
+      } else {
+        res.json(user);
+        redirect('/:user_id');
+      }
     });
   },
 
-  show_profile: function(req, res) {
-    res.json(req.user);
+  show_profile: function(req, res, err) {
+    var user_id = req.params.id;
+
+    if(users.find(id)) {
+      // render profile details on namecard
+    } else {
+      next(err);
+    }
   },
 
   show_update_form: function(req, res) {
@@ -30,6 +40,7 @@ module.exports = {
         return next(err);
       } else {
         res.json(user);
+        redirect('/:user_id');
       }
     });
   },
@@ -40,8 +51,12 @@ module.exports = {
 
   delete_account: function(req, res, next) {
     req.user.remove(function(err) {
-      if (err) return next(err);
-      res.json(req.user);
+      if (err) {
+        return next(err);
+      } else {
+        res.json(req.user);
+        redirect('/');
+      }
     });
   }
 
