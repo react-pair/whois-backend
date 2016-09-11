@@ -44,12 +44,7 @@ var UserSchema = new Schema({
   profilePic: {
     type: String,
     required: true
-  },
-  peersList: [
-    {
-      type: Schema.Type.ObjectId, ref: 'User'
-    }
-  ]
+  }
 });
 
 UserSchema.virtual('fullName')
