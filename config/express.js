@@ -34,7 +34,7 @@ module.exports = function() {
   app.use(expressLayouts);
 
   require('../app/routes/user.server.routes')(app);
-  require('../app/routes/rs.server.routes')(app);
+  // require('../app/routes/rs.server.routes')(app);
 
   app.use(express.static('./public'));
 
