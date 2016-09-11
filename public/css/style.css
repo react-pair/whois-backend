@@ -1,0 +1,24 @@
+@charset "UTF-8";
+body{
+font-family: 'Lato', sans-serif;
+font-weight: 300;
+background-color: rgba(0,0,0,0.68);
+}
+.jumbotron{
+  background-color: transparent !important;
+}
+.jumbotron h1{
+  color: white;
+}
+.panel{
+  background-color: rgba(0,0,0,0.4);
+  border-color: red;
+}
+.panel-info{
+  border-color:white !important;
+}
+.panel-info>.panel-heading {
+    color: white;
+    background-color: lightgrey;
+
+}

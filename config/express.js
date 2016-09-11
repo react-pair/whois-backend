@@ -33,10 +33,8 @@ module.exports = function() {
   app.set('view engine', 'ejs');
   app.use(expressLayouts);
 
-  // require('../app/routes/index.server.routes')(app);
   require('../app/routes/user.server.routes')(app);
-  // require('../app/routes/post.server.routes')(app);
-  // require('../app/routes/person.server.routes')(app);
+  // require('../app/routes/rs.server.routes')(app);
 
   app.use(express.static('./public'));
 
