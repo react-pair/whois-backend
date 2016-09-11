@@ -1,5 +1,9 @@
 var express = require('./config/express');
 var mongoose = require('./config/mongoose');
+// mongoose.connect('mongodb://localhost/whoisDB');
+// require('./models/user.server.model');
+
+// var users = require('./routes/users');
 
 var db = mongoose();
 var app = express();
