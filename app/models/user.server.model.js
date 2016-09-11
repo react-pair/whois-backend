@@ -35,11 +35,9 @@ var UserSchema = new Schema({
   },
   companyLogo: {
     type: String,
-    required: true
   },
   profilePic: {
     type: String,
-    required: true
   }
 });
 

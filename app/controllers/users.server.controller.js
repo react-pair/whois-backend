@@ -23,7 +23,7 @@ module.exports = {
   show_profile: function(req, res, err) {
     var user_id = req.params.id;
 
-    if(users.find(id)) {
+    if(User.find(id)) {
       // render profile details on namecard
     } else {
       next(err);
