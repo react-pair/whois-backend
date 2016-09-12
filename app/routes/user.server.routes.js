@@ -3,19 +3,15 @@ module.exports = function(app) {
 
   // restful USER routes
 
-  app.get('/', function(req, res) {
-    res.render('../views/pages/login');
-  });
-
   // signup page
   app.route('/signup')
      .get(usersController.render_signup_form)
      .post(usersController.save_user);
 
   // login page
-  app.route('/login')
+  app.route('/')
      .get(usersController.render_login_form)
-     .post(usersController.session_handle);
+     .post(usersController.login);
 
   // profile page of individual user
   app.get('/:user_id', usersController.show_profile);

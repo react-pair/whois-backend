@@ -19,9 +19,16 @@ module.exports = {
     });
   },
 
+  render_login_form: function(req, res) {
+    res.render('../views/pages/login');
+  },
+
+  login: function(req, res) {
+    console.log('login function works');
+  },
+
   show_profile: function(req, res, err) {
     var user_id = req.params.id;
-    console.log(user_id);
 
     if(User.find(user_id)) {
       res.render('../views/pages/profile');
