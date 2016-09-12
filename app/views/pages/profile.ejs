@@ -1,1 +1,52 @@
-<h1><%= email %></h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../partials/head %>
+</head>
+  <body>
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+    <div class="container m-t-md">
+<!-- First row -->
+<div class="row">
+  <div class="col-xs-12 col-md-4">
+    <!-- Card -->
+    <div class="well">
+      <div class="row">
+        <div class="col-xs-6 ">
+  <img class=" img-responsive" src="..." alt="Card image cap" style="height: 100px; width: 100px; border-radius:50%; background-color:rgba(70,130,180,0.5); margin-bottom:10px;">
+  <hr>
+  <div class="card-block">
+    <p class="card-text">
+      Name: <%= name%></br>
+      Position: <%= position%>
+
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-6 pull-left">
+    <img class="img-responsive" src="..." alt="" style="height: 100px; width: 180px; margin-bottom:10px; margin-left: -20px; background-color:rgba(70,130,180,0.5)"/>
+    <hr class="hr-left">
+
+    <div class="card-block">
+      <p class="card-text">
+
+        Contact: <%= contact%></br>
+        Email: <%= email%>
+      </p>
+    </div>
+  </div>
+
+</div>
+  </div>
+</div>
+  </div>
+</div>
+
+  </body>
+
+</html>

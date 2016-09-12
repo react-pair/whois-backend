@@ -4,6 +4,34 @@ font-family: 'Lato', sans-serif;
 font-weight: 300;
 background-color: rgba(0,0,0,0.68);
 }
+/*navbar styling*/
+a{
+  color:white;
+}
+/*end of navbar styling*/
+
+/*profile namecard styling*/
+.well{
+  padding-bottom: 0px;
+}
+.card-text{
+  font-size: 12px;
+}
+hr{
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+.hr-left{
+margin-top: 5px;
+margin-bottom: 5px;
+margin-left: -35px;
+border: 0;
+border-top: 1px solid #eee;
+}
+/*end of profile namecard styling*/
+/*log in and sign up panel styling*/
+
 .jumbotron{
   background-color: transparent !important;
   padding-top: 0px !important;
@@ -11,6 +39,7 @@ background-color: rgba(0,0,0,0.68);
 .jumbotron h1{
   color: white;
 }
+
 .panel{
   background-color: rgba(0,0,0,0.4);
   border-color: red;
@@ -23,7 +52,6 @@ background-color: rgba(0,0,0,0.68);
     background-color: lightgrey;
 
 }
-
 .btn-circle {
   width: 80px;
   height: 80px;
@@ -50,3 +78,4 @@ background-color: rgba(0,0,0,0.68);
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
   color:    lightgrey !important;
 }
+/*end of log in and sign up panel styling*/

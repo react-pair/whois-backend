@@ -66,7 +66,10 @@ module.exports = {
       return res.status(401).send();
     } else {
       return res.status(200).render('../views/pages/profile', {
-        email: req.session.user.email
+        name: req.session.user.displayName,
+        email: req.session.user.email,
+        contact: req.session.user.contact,
+        position: req.session.user.position
       });
     }
   },
