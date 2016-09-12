@@ -14,7 +14,24 @@ module.exports = {
       if (err) {
         return next(err);
       } else {
-        res.redirect('/' + user._id);
+        var email = user.email;
+        var password = user.password;
+        User.findOne({email: email, password: password}, function(err, user) {
+          if(err) {
+            console.log(err);
+            res.redirect('/');
+            return res.status(500).send();
+          }
+          if (!user) {
+            res.redirect('/');
+            return res.status(404).send();
+          } else {
+            req.session.user = user;
+            res.redirect('/' + user._id);
+            return res.status(200).send();
+          }
+        });
+        // res.redirect('/' + user._id);
       }
     });
   },
