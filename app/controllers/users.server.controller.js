@@ -68,7 +68,7 @@ module.exports = {
       return res.status(200).render('../views/pages/profile', {
         name: req.session.user.displayName,
         email: req.session.user.email,
-        contact: req.session.user.contact,
+        contact: req.session.user.contactNum,
         position: req.session.user.position
       });
     }
