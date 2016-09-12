@@ -4,7 +4,7 @@ module.exports = function(app) {
   // restful USER routes
 
   app.get('/', function(req, res) {
-    res.send('hello');
+    res.render('../views/pages/login');
   });
 
   // signup page
