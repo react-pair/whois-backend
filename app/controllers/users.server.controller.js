@@ -19,14 +19,41 @@ module.exports = {
     });
   },
 
+  render_login_form: function(req, res) {
+    res.render('../views/pages/login');
+  },
+
+  login: function(req, res) {
+    var user = req.body;
+    var email = req.body.email;
+    var password = req.body.password;
+    User.findOne({email: email, password: password}, function(err, user) {
+      if(err) {
+        console.log(err);
+        res.redirect('/');
+        return res.status(500).send();
+      }
+      if (!user) {
+        res.redirect('/');
+        return res.status(404).send();
+      } else {
+        req.session.user = user;
+        res.redirect('/' + user._id);
+        return res.status(200).send();
+      }
+    });
+  },
+
   show_profile: function(req, res, err) {
     var user_id = req.params.id;
-    console.log(user_id);
-
-    if(User.find(user_id)) {
-      res.render('../views/pages/profile');
+    var user = req.session.user;
+    if(!req.session.user) {
+      return res.status(401).send();
     } else {
-      next(err);
+      console.log(req.session.user.email);
+      return res.status(200).render('../views/pages/profile', {
+        email: req.session.user.email
+      });
     }
   },
 
@@ -40,7 +67,7 @@ module.exports = {
         return next(err);
       } else {
         res.json(user);
-        redirect('/:user_id');
+        res.redirect('/' + user._id);
       }
     });
   },

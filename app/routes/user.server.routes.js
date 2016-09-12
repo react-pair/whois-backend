@@ -3,25 +3,18 @@ module.exports = function(app) {
 
   // restful USER routes
 
-  app.get('/', function(req, res) {
-    res.send('hello');
-  });
-
   // signup page
   app.route('/signup')
      .get(usersController.render_signup_form)
      .post(usersController.save_user);
 
+  // login page
+  app.route('/')
+     .get(usersController.render_login_form)
+     .post(usersController.login);
+
   // profile page of individual user
   app.get('/:user_id', usersController.show_profile);
-
-  // primary friends list of individual user
-  // app.get('/:user_id/contacts', usersController.show_pri_friends);
-
-  // invitation page
-  // app.route('/:user_id/invite')
-  //    .get(usersController.invitation)
-  //    .post(usersController.invitation);
 
   // // profile/namecard update page
   app.route('/:user_id/edit')
@@ -34,3 +27,11 @@ module.exports = function(app) {
      .delete(usersController.delete_account);
 
  };
+
+ // primary friends list of individual user
+ // app.get('/:user_id/contacts', usersController.show_pri_friends);
+
+ // invitation page
+ // app.route('/:user_id/invite')
+ //    .get(usersController.invitation)
+ //    .post(usersController.invitation);
