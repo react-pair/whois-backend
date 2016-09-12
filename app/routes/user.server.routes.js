@@ -23,7 +23,6 @@ module.exports = function(app) {
 
   // account delete page
   app.route('/:user_id/delete')
-     .get(usersController.render_del_page)
      .delete(usersController.delete_account);
 
  };

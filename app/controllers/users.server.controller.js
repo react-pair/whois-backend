@@ -75,10 +75,11 @@ module.exports = {
   },
 
   show_update_form: function(req, res) {
-    // form for editing profile/namecard
+    res.render('../views/pages/edit');
   },
 
   update_profile: function(req, res, next) {
+    var user_id = req.params.id;
     User.findByIdAndUpdate(req.user.id, req.body, function(err ,user) {
       if (err) {
         return next(err);
@@ -87,10 +88,6 @@ module.exports = {
         res.redirect('/' + user._id);
       }
     });
-  },
-
-  render_del_page: function(req, res) {
-    // ask if they're certain that they're deleting their account
   },
 
   delete_account: function(req, res, next) {
