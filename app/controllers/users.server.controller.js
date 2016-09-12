@@ -24,7 +24,7 @@ module.exports = {
     console.log(user_id);
 
     if(User.find(user_id)) {
-      res.send('goodbye muthafuckers');
+      res.render('../views/pages/profile');
     } else {
       next(err);
     }
