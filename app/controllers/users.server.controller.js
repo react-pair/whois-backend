@@ -24,7 +24,6 @@ module.exports = {
   },
 
   login: function(req, res) {
-    var user = req.body;
     var email = req.body.email;
     var password = req.body.password;
     User.findOne({email: email, password: password}, function(err, user) {
@@ -46,11 +45,9 @@ module.exports = {
 
   show_profile: function(req, res, err) {
     var user_id = req.params.id;
-    var user = req.session.user;
     if(!req.session.user) {
       return res.status(401).send();
     } else {
-      console.log(req.session.user.email);
       return res.status(200).render('../views/pages/profile', {
         email: req.session.user.email
       });
