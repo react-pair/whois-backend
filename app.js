@@ -7,8 +7,8 @@ var mongoose = require('./config/mongoose');
 
 var db = mongoose();
 var app = express();
-// var mongo_url = process.env.MONGODB_URI || 'mongodb://benyang00:Apr261985@ds029446.mlab.com:29446/whois';
-// mongoose.connect(mongo_url);
+mongoose.connect('mongodb://kai:kaikai@ds029436.mlab.com:29436/whois');
+
 
 app.set('port', (process.env.PORT || 3333));
 
