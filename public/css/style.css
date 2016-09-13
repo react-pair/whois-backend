@@ -13,6 +13,7 @@ a{
 /*profile namecard styling*/
 .well{
   padding-bottom: 0px;
+  padding-top: 0px;
 }
 .card-text{
   font-size: 12px;
@@ -28,6 +29,25 @@ margin-bottom: 5px;
 margin-left: -35px;
 border: 0;
 border-top: 1px solid #eee;
+}
+.thumbnail{
+  background-image: image('img/avatar.png')!important;
+  background-color: none;
+}
+.dropdown-menu>li>form {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+  }
+  
+
+.btn-default:active:hover, .open>.dropdown-toggle.btn-default:hover {
+  background-color: transparent !important;
+
 }
 /*end of profile namecard styling*/
 /*log in and sign up panel styling*/
