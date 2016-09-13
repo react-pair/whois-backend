@@ -1,6 +1,24 @@
 var User = require('mongoose').model('User');
 
-module.exports = {
+var self = module.exports = {
+
+  checkUserExists: function(req, res, email, password){
+    User.findOne({email: email, password: password}, function(err, user) {
+      if(err) {
+        console.log(err);
+        res.redirect('/');
+        return res.status(500).send();
+      }
+      if (!user) {
+        res.redirect('/');
+        return res.status(404).send();
+      } else {
+        req.session.user = user;
+        res.redirect('/users/' + user._id);
+        return res.status(200).send();
+      }
+    });
+  },
 
   render_signup_form: function(req, res) {
     res.render('../views/pages/signup', {
@@ -14,13 +32,14 @@ module.exports = {
       if (err) {
         return next(err);
       } else {
-        res.redirect('/' + user._id);
+        self.checkUserExists(req, res, user.email, user.password);
+        // res.redirect('/' + user._id);
       }
     });
   },
 
   render_login_form: function(req, res) {
-    res.render('../views/pages/login');
+    res.render('pages/login');
   },
 
   login: function(req, res) {
@@ -37,49 +56,54 @@ module.exports = {
         return res.status(404).send();
       } else {
         req.session.user = user;
-        res.redirect('/' + user._id);
+        res.redirect('/users/' + user._id);
         return res.status(200).send();
       }
     });
   },
 
   show_profile: function(req, res, err) {
-    var user_id = req.params.id;
     if(!req.session.user) {
       return res.status(401).send();
     } else {
-      return res.status(200).render('../views/pages/profile', {
-        email: req.session.user.email
+      return res.status(200).render('pages/profile', {
+        id: req.session.user.id,
+        name: req.session.user.displayName,
+        email: req.session.user.email,
+        contact: req.session.user.contactNum,
+        position: req.session.user.position
       });
     }
   },
 
   show_update_form: function(req, res) {
-    // form for editing profile/namecard
+    res.render('pages/edit', {
+      id: req.session.user.id,
+      name: req.session.user.displayName,
+      email: req.session.user.email,
+      contact: req.session.user.contactNum,
+      position: req.session.user.position
+    });
   },
 
   update_profile: function(req, res, next) {
-    User.findByIdAndUpdate(req.user.id, req.body, function(err ,user) {
+    User.findByIdAndUpdate(req.session.user.id, req.body, {new: true}, function(err ,user) {
       if (err) {
         return next(err);
       } else {
-        res.json(user);
-        res.redirect('/' + user._id);
+        req.session.user = user;
+        console.log('session updated');
+        res.redirect('/users/' + user._id);
       }
     });
   },
 
-  render_del_page: function(req, res) {
-    // ask if they're certain that they're deleting their account
-  },
-
   delete_account: function(req, res, next) {
-    req.user.remove(function(err) {
+    User.remove({_id:req.session.user.id}, function(err) {
       if (err) {
         return next(err);
       } else {
-        res.json(req.user);
-        redirect('/');
+        res.redirect('/');
       }
     });
   }
