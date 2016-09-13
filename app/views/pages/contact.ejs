@@ -11,6 +11,13 @@
         <% include ../partials/header %>
     </header>
     <div class="container m-t-md">
+
+      <form method="POST" action="/search">
+        <div style="margin-bottom: 25px" class="input-group">
+            <input id="email" type="text" class="form-control" name="email" value="" placeholder="Please enter a user's email address">
+        </div>
+      </form>
+
         <!-- First row -->
         <div class="row">
             <div class="col-xs-12 col-md-4">

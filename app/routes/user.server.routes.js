@@ -26,6 +26,10 @@ module.exports = function(app) {
   app.route('/delete/:user_id')
      .delete(usersController.delete_account);
 
+  // search for user
+  app.route('/search')
+     .post(usersController.search_user);
+
  };
 
  // invitation page

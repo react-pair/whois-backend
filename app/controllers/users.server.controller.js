@@ -5,7 +5,6 @@ var self = module.exports = {
   checkUserExists: function(req, res, email, password){
     User.findOne({email: email, password: password}, function(err, user) {
       if(err) {
-        console.log(err);
         res.redirect('/');
         return res.status(500).send();
       }
@@ -104,6 +103,17 @@ var self = module.exports = {
         return next(err);
       } else {
         res.redirect('/');
+      }
+    });
+  },
+
+  search_user: function(email, req, res, next) {
+    User.findOne({ email: email }, function(err, user) {
+      if(err) {
+        res.redirect('/contacts/' + req.session.user._id);
+        return res.status(500).send();
+      } else {
+        res.redirect('/users/' + user.id);
       }
     });
   }
