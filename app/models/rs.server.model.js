@@ -2,19 +2,27 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var RsSchema = new Schema({
-  user1_id: [
+  sender_id: [
     {
-      type: Schema.Type.ObjectId, ref: 'User'
+      type: mongoose.Schema.Types.ObjectId, ref: 'User'
     }
   ],
-  user2_id: [
+  receiver_id: [
     {
-      type: Schema.Type.ObjectId, ref: 'User'
+      type: mongoose.Schema.Types.ObjectId, ref: 'User'
     }
   ],
   rs_type: {
-    type: Number,
+    type: Boolean,
     required: true
+  },
+  invitation: {
+    type: Boolean,
+    require: true
+  },
+  accept: {
+    type: Boolean,
+    require: true
   }
 });
 

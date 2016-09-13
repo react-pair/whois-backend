@@ -21,7 +21,7 @@ var self = module.exports = {
   },
 
   render_signup_form: function(req, res) {
-    res.render('../views/pages/signup', {
+    res.render('pages/signup', {
       title: 'Signup Here!'
     });
   },
