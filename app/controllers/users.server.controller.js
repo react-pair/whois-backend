@@ -76,8 +76,13 @@ module.exports = {
   },
 
   show_update_form: function(req, res) {
-    console.log('');
-    res.render('../views/pages/edit');
+    res.render('../views/pages/edit', {
+      id: req.session.user.id,
+      name: req.session.user.displayName,
+      email: req.session.user.email,
+      contact: req.session.user.contactNum,
+      position: req.session.user.position
+    });
   },
 
   update_profile: function(req, res, next) {
