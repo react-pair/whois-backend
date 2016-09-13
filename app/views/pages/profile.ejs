@@ -20,13 +20,12 @@
   <hr>
   <div class="card-block">
     <p class="card-text">
-      Name: <%= name%></br>
-      Position: <%= position%>
+      Name: <%= name %></br>
+      Position: <%= position %>
 
     </p>
   </div>
-  <a href=" / '+ user_id +' /edit " style="font-size:12px; text-decoration: underline; color: steelblue;">edit</a>
-  <a href=" / '+ user_id +' /delete " style="font-size:12px; text-decoration: underline; color: steelblue;">delete</a>
+  <a href="<%= id %>/edit" style="font-size:12px; text-decoration: underline; color: steelblue;">edit</a>
 
 </div>
 
@@ -40,7 +39,7 @@
       <p class="card-text">
 
         Contact: <%= contact %></br>
-        Email: <%= email%></br>
+        Email: <%= email %></br>
       </p>
 
     </div>

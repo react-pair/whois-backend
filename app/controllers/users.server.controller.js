@@ -66,6 +66,7 @@ module.exports = {
       return res.status(401).send();
     } else {
       return res.status(200).render('../views/pages/profile', {
+        id: req.session.user.id,
         name: req.session.user.displayName,
         email: req.session.user.email,
         contact: req.session.user.contactNum,
@@ -75,6 +76,7 @@ module.exports = {
   },
 
   show_update_form: function(req, res) {
+    console.log('');
     res.render('../views/pages/edit');
   },
 

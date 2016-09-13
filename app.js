@@ -7,7 +7,7 @@ var mongoose = require('./config/mongoose');
 
 var db = mongoose();
 var app = express();
-mongoose.connect('mongodb://kai:kaikai@ds029436.mlab.com:29436/whois');
+// mongoose.connect('mongodb://kai:kaikai@ds029436.mlab.com:29436/whois');
 
 
 app.set('port', (process.env.PORT || 3333));
