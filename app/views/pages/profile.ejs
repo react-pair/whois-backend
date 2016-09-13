@@ -4,6 +4,7 @@
     <% include ../partials/head %>
 </head>
   <body>
+
     <header>
         <% include ../partials/header %>
     </header>
@@ -21,8 +22,10 @@
     <p class="card-text">
       Name: <%= name %></br>
       Position: <%= position %>
+
     </p>
   </div>
+
 <div class="row">
   <div class="col-xs-3">
     <form action="/delete/<%= id %>?_method=DELETE" method="POST" id="deleteform" class="form-horizontal " role="form">
@@ -33,6 +36,7 @@
       <a href="/edit/<%= id %>"><button id="btn-edit" class="btn btn-default btn-xs glyphicon glyphicon-cog"><i class="icon-hand-right" style="background-color: transparent; margin-bottom:10px;"></i></button></a>
   </div>
 </div>
+
 </div>
 <div class="row">
   <div class="col-xs-6 pull-left">
@@ -43,15 +47,26 @@
         Contact: <%= contact %></br>
         Email: <%= email %></br>
       </p>
-    </div>
+
+
+</div>
+
+<div class="row">
+  <div class="col-xs-6 pull-left">
+
+    
     <div class="col-xs-5 col-xs-offset-1 pull-right">
         <a href="/edit/<%= id %>"><button id="btn-edit" class="btn btn-default btn-xs glyphicon glyphicon-list-alt"><i class="icon-hand-right" style="background-color: transparent; margin-bottom:10px;"></i></button></a>
     </div>
   </div>
+
 </div>
   </div>
 </div>
   </div>
 </div>
+
+
   </body>
+
 </html>
