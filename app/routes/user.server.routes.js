@@ -14,15 +14,16 @@ module.exports = function(app) {
      .post(usersController.login);
 
   // profile page of individual user
-  app.get('/:user_id', usersController.show_profile);
-
-  // // profile/namecard update page
-  app.route('/:user_id/edit')
-     .get(usersController.show_update_form)
+  app.route('/users/:user_id')
+     .get(usersController.show_profile)
      .put(usersController.update_profile);
 
+  // // profile/namecard update page
+  app.route('/edit/:user_id')
+     .get(usersController.show_update_form);
+
   // account delete page
-  app.route('/:user_id/delete')
+  app.route('/delete/:user_id')
      .delete(usersController.delete_account);
 
  };

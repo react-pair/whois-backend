@@ -25,7 +25,11 @@
 
     </p>
   </div>
-  <a href="<%= id %>/edit" style="font-size:12px; text-decoration: underline; color: steelblue;">edit</a>
+  <a href="/edit/<%= id %>" style="font-size:12px; text-decoration: underline; color: steelblue;">edit</a>
+
+  <form action="/delete/<%= id %>?_method=DELETE" method="POST" id="deleteform" class="form-horizontal" role="form">
+    <button id="btn-delete" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>delete</button>
+  </form>
 
 </div>
 

@@ -14,7 +14,7 @@
                                 <div style="padding-top:10px" class="panel-body">
                                     <div style="display:none" id="edit-alert" class="alert alert-danger col-sm-12"></div>
 
-                                    <form action="/edit" method="PUT" id="editform" class="form-horizontal" role="form">
+                                    <form action="/users/<%= id %>?_method=PUT" method="POST" id="editform" class="form-horizontal" role="form">
 
 
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
