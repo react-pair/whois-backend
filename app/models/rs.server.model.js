@@ -13,16 +13,8 @@ var RsSchema = new Schema({
     }
   ],
   rs_type: {
-    type: Boolean,
+    type: Number,
     required: true
-  },
-  invitation: {
-    type: Boolean,
-    require: true
-  },
-  accept: {
-    type: Boolean,
-    require: true
   }
 });
 

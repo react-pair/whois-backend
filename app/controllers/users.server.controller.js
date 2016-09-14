@@ -113,9 +113,18 @@ var self = module.exports = {
       if(err) {
         res.redirect('/contacts/' + req.session.user._id);
         return res.status(500).send();
+      }
+      if(!user) {
+        res.redirect('/contacts/' + req.session.user._id);
       } else {
-        console.log(user);
-        res.redirect('/users/' + user.id);
+        res.render('pages/usersummary', {
+          receiver_id: user.id,
+          name: user.displayName,
+          email: user.email,
+          contact: user.contactNum,
+          position: user.position,
+          sender_id: req.session.user._id
+        });
       }
     });
   }

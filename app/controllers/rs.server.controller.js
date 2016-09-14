@@ -11,6 +11,18 @@ module.exports = {
       contact: req.session.user.contactNum,
       position: req.session.user.position
     });
+  },
+
+  establish_rs: function(req, res, next) {
+    console.log(req.body);
+    var rs = new Rs(req.body);
+    rs.save (function(err) {
+      if (err) {
+        return next(err);
+      } else {
+        res.redirect('/contacts/' + req.session.user._id);
+      }
+    });
   }
 
 };

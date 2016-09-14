@@ -34,10 +34,10 @@ var UserSchema = new Schema({
     required: true
   },
   companyLogo: {
-    type: String,
+    type: String
   },
   profilePic: {
-    type: String,
+    type: String
   }
 });
 

@@ -11,6 +11,16 @@
         <% include ../partials/header %>
     </header>
     <div class="container m-t-md">
+
+      <form method="POST" action="/search">
+        <div style="margin-bottom: 25px" class="input-group">
+            <input id="email" type="text" class="form-control" name="email" value="" placeholder="Please enter a user's email address">
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+                <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>Search</button>
+            </div>
+      </form>
         <!-- First row -->
         <div class="row">
             <div class="col-xs-12 col-md-4">
@@ -31,12 +41,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <form action="/delete/<%= id %>?_method=DELETE" method="POST" id="deleteform" class="form-horizontal " role="form">
+                                    <form action="/delete/<%= receiver_id %>?_method=DELETE" method="POST" id="deleteform" class="form-horizontal " role="form">
                                         <button id="btn-delete" type="submit" class="btn btn-default btn-xs glyphicon glyphicon-trash" style="margin-bottom:10px;"><i class="icon-hand-right"></i></button>
                                     </form>
                                 </div>
                                 <div class="col-xs-3 pull-left">
-                                    <a href="/edit/<%= id %>">
+                                    <a href="/edit/<%= receiver_id %>">
                                         <button id="btn-edit" class="btn btn-default btn-xs glyphicon glyphicon-cog"><i class="icon-hand-right" style="background-color: transparent; margin-bottom:10px;"></i></button>
                                     </a>
                                 </div>
@@ -59,9 +69,20 @@
                                 <div class="row">
                                     <div class="col-xs-6 pull-left">
                                         <div class="col-xs-5 col-xs-offset-1 pull-right">
-                                            <a href="/contacts/<%= id %>">
+                                            <a href="/contacts/<%= receiver_id %>">
                                                 <button id="btn-edit" class="btn btn-default btn-xs glyphicon glyphicon-list-alt"><i class="icon-hand-right" style="background-color: transparent; margin-bottom:10px;"></i></button>
                                             </a>
+                                            <form method="POST" action="/contacts/:user_id">
+                                              <div style="margin-bottom: 25px" class="input-group">
+                                                  <input id="sender_id" type="hidden" class="form-control" name="sender_id" value="<%= sender_id %>" placeholder="">
+                                                  <input id="receiver_id" type="hidden" class="form-control" name="receiver_id" value="<%= receiver_id %>" placeholder="">
+                                                  <input id="rs_type" type="hidden" class="form-control" name="rs_type" value=1 placeholder="">
+                                              </div>
+                                              <div class="form-group">
+                                                  <div class="col-md-offset-3 col-md-9">
+                                                      <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>Send Request</button>
+                                                  </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

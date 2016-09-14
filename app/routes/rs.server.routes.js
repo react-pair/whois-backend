@@ -3,8 +3,8 @@ module.exports = function(app) {
 
   // show primary friends list of individual user (read relationships)
   app.route('/contacts/:user_id')
-     .get(rsController.show_pri_friends);
-    //  .put(rsController.establish_rs);
+     .get(rsController.show_pri_friends)
+     .post(rsController.establish_rs);
   //
   // // invite friends (create new relationship)
   // app.route('invite/:user_id')
