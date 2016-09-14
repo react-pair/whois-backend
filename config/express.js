@@ -8,7 +8,7 @@ var expressLayouts = require('express-ejs-layouts');
 var session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 var cloudinary = require('cloudinary');
-
+var mongoose = require('mongoose');
 module.exports = function() {
   var app = express();
 
