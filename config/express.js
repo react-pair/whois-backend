@@ -37,7 +37,7 @@ module.exports = function() {
     saveUninitialized: true,
     resave: true,
     secret: "r3@ct-p4Ir",
-    store: new MongoStore()
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
     // secret: config.sessionSecret
   }));
 
