@@ -2,6 +2,13 @@ var Rs = require('mongoose').model('Rs');
 
 module.exports = {
 
+  show_request_list: function(req, res) {
+    console.log(req.body);
+    res.render('pages/requests', {
+
+    });
+  },
+
   show_pri_friends: function(req, res) {
     res.render('pages/contact', {
       // TEMPORARY!!! Change to relationships DB after testing

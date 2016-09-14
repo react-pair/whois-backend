@@ -5,6 +5,8 @@ module.exports = function(app) {
   app.route('/contacts/:user_id')
      .get(rsController.show_pri_friends)
      .post(rsController.establish_rs);
+
+  app.get('/requests/:user_id', rsController.show_request_list);
   //
   // // invite friends (create new relationship)
   // app.route('invite/:user_id')
