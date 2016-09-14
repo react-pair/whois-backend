@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var expressLayouts = require('express-ejs-layouts');
 var session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 var cloudinary = require('cloudinary');
 
 module.exports = function() {
@@ -35,7 +36,8 @@ module.exports = function() {
   app.use(session({
     saveUninitialized: true,
     resave: true,
-    secret: "r3@ct-p4Ir"
+    secret: "r3@ct-p4Ir",
+    store: new MongoStore(options)
     // secret: config.sessionSecret
   }));
 
