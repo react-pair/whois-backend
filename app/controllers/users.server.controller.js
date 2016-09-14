@@ -107,12 +107,14 @@ var self = module.exports = {
     });
   },
 
-  search_user: function(email, req, res, next) {
-    User.findOne({ email: email }, function(err, user) {
+  search_user: function(req, res) {
+    var search_email = req.body.email;
+    User.findOne({ email: search_email }, function(err, user) {
       if(err) {
         res.redirect('/contacts/' + req.session.user._id);
         return res.status(500).send();
       } else {
+        console.log(user);
         res.redirect('/users/' + user.id);
       }
     });
