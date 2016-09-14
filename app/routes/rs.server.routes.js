@@ -6,15 +6,11 @@ module.exports = function(app) {
      .get(rsController.show_pri_friends)
      .post(rsController.establish_rs);
 
+  // invite users to be friends (create new relationship; rs_type: 1)
   app.get('/requests/:user_id', rsController.show_request_list);
-  //
-  // // invite friends (create new relationship)
-  // app.route('invite/:user_id')
-  //     .get(rsController.render_inv_form)
-  //     .post(rsController.instantiate_rs);
-  //
-  // // accept invitation (update instantiated relationship to rs_type: 1)
-  // app.get('/accept/:user_id', rsController.render_accept_page);
+
+  // accept invitation (update instantiated relationship to rs_type: 2)
+  app.put('/accept/:user_id', rsController.accept_request);
   //
   // // delete contacts (update relationship to to rs_type: 0)
   // app.put('/delete/:user_id', rsController.delete_contact);

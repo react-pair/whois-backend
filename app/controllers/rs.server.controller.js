@@ -2,10 +2,17 @@ var Rs = require('mongoose').model('Rs');
 
 module.exports = {
 
-  show_request_list: function(req, res) {
-    console.log(req.body);
-    res.render('pages/requests', {
-
+  show_request_list: function(req, res, next) {
+    var user = req.session.user;
+    Rs.find({receiver_id: user._id, rs_type: 1})
+    .populate('sender_id')
+    .exec(function(err, userObjects) {
+      if (err) next (err);
+      res.render('pages/requests', {
+        requests: userObjects
+      });
+      console.log('userobjects[0] is ', userObjects[0]);
+      console.log('requests:', userObjects[0].sender_id[0].displayName);
     });
   },
 
@@ -21,7 +28,6 @@ module.exports = {
   },
 
   establish_rs: function(req, res, next) {
-    console.log(req.body);
     var rs = new Rs(req.body);
     rs.save (function(err) {
       if (err) {
@@ -30,6 +36,10 @@ module.exports = {
         res.redirect('/contacts/' + req.session.user._id);
       }
     });
+  },
+
+  accept_request: function(req, res, next) {
+
   }
 
 };

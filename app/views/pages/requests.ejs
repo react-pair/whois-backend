@@ -1,0 +1,17 @@
+<h3>Requests</h3>
+<ul>
+<% for (var i = 0; i < requests.length; i ++) { %>
+  <% for (var j = 0; j < requests[i].sender_id.length; j ++) { %>
+    <li>
+      <%= requests[i].sender_id[j].displayName %>
+      <%= requests[i].sender_id[j].position %>
+          <form href="/accept/:user_id" class="" action="index.html" method="post">
+            <input type="hidden" name="rs_type" value=2>
+            <button id="btn-edit" class="btn btn-default btn-xs glyphicon glyphicon-resize-small"><i class="icon-hand-right" style="background-color: transparent; margin-bottom:10px;"></i></button>
+          </form>
+
+      
+    </li>
+  <% } %>
+<% } %>
+</ul>
