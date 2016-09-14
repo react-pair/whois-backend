@@ -1,4 +1,5 @@
 var User = require('mongoose').model('User');
+var cloudinary = require('cloudinary');
 
 var self = module.exports = {
 
@@ -71,7 +72,8 @@ var self = module.exports = {
         name: req.session.user.displayName,
         email: req.session.user.email,
         contact: req.session.user.contactNum,
-        position: req.session.user.position
+        position: req.session.user.position,
+        profilePic: req.session.user.profilePic
       });
     }
   },
@@ -82,20 +84,51 @@ var self = module.exports = {
       name: req.session.user.displayName,
       email: req.session.user.email,
       contact: req.session.user.contactNum,
-      position: req.session.user.position
+      position: req.session.user.position,
+      profilePic: req.session.user.profilePic
     });
   },
 
   update_profile: function(req, res, next) {
-    User.findByIdAndUpdate(req.session.user.id, req.body, {new: true}, function(err ,user) {
-      if (err) {
-        return next(err);
-      } else {
-        req.session.user = user;
-        console.log('session updated');
-        res.redirect('/users/' + user._id);
-      }
-    });
+
+    User.findOne({
+      _id: req.session.user.id
+    }, function(err, user){
+
+      if (err) return next(err);
+      user.displayName = req.body.displayName;
+      user.email = req.body.email;
+      user.contactNum = req.body.contactNum;
+      user.position = req.body.position;
+
+      cloudinary.v2.uploader.upload(
+        req.files.profilePic.path, function(error, result){
+          if (error) next(error);
+
+          user.profilePic = result.secure_url;
+
+          user.save(function(err){
+            if(err) return next(err);
+            req.session.user = user;
+            console.log('session updated');
+            res.redirect('/users/' + user._id);
+          });
+        }
+      );
+
+    })
+
+
+
+    // User.findByIdAndUpdate(req.session.user.id, req.body, {new: true}, function(err ,user) {
+    //   if (err) {
+    //     return next(err);
+    //   } else {
+    //     req.session.user = user;
+    //     console.log('session updated');
+    //     res.redirect('/users/' + user._id);
+    //   }
+    // });
   },
 
   delete_account: function(req, res, next) {

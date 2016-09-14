@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var expressLayouts = require('express-ejs-layouts');
 var session = require('express-session');
+var cloudinary = require('cloudinary');
 
 module.exports = function() {
   var app = express();
@@ -30,12 +31,21 @@ module.exports = function() {
 
   app.use(bodyParser.json());
 
+
   app.use(session({
     saveUninitialized: true,
     resave: true,
     secret: "r3@ct-p4Ir"
     // secret: config.sessionSecret
   }));
+
+  // cloudinary configuration
+  cloudinary.config({
+    cloud_name: config.CLOUDINARY_NAME,
+    api_key: config.CLOUDINARY_KEY,
+    api_secret: config.CLOUDINARY_SECRET
+  })
+
 
   app.set('views', './app/views');
   app.set('view engine', 'ejs');

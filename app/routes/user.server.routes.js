@@ -1,3 +1,6 @@
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
+
 module.exports = function(app) {
   var usersController = require('../controllers/users.server.controller');
 
@@ -16,7 +19,7 @@ module.exports = function(app) {
   // profile page of individual user
   app.route('/users/:user_id')
      .get(usersController.show_profile)
-     .put(usersController.update_profile);
+     .put(multipartMiddleware, usersController.update_profile);
 
   // // profile/namecard update page
   app.route('/edit/:user_id')
