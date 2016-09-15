@@ -4,3 +4,6 @@ module.exports ={
   CLOUDINARY_SECRET: process.env.CLOUDINARY_SECRET,
   CLOUDINARY_NAME: process.env.CLOUDINARY_NAME
 };
+
+
+// process.env.MONGODB_URI
