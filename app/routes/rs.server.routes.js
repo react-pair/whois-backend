@@ -11,7 +11,7 @@ module.exports = function(app) {
 
   // accept invitation (update instantiated relationship to rs_type: 2)
   app.put('/accept/:user_id', rsController.accept_request);
-  //
+
   // // delete contacts (update relationship to to rs_type: 0)
   // app.put('/delete/:user_id', rsController.delete_contact);
 

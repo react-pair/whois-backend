@@ -16,19 +16,34 @@ module.exports = {
     });
   },
 
-  show_pri_friends: function(req, res) {
-    res.render('pages/contact', {
-      // TEMPORARY!!! Change to relationships DB after testing
-      id: req.session.user.id,
-      name: req.session.user.displayName,
-      email: req.session.user.email,
-      contact: req.session.user.contactNum,
-      position: req.session.user.position
-    });
+  show_pri_friends: function(req, res, next) {
+    var user = req.session.user;
+    console.log('logged in user:', user);
+    Rs.find({
+      $and: [
+        {rs_type: 2},
+        { $or: [{sender_id: user._id}, {receiver_id: user._id}] }
+      ]
+    }).populate('receiver_id sender_id')
+      .exec(function(err, contacts) {
+        if(err) next(err);
+        console.log('contacts: ', contacts);
+        console.log('receiver_id_obj: ', contacts[0].receiver_id);
+        console.log('sender_id_obj: ', contacts[0].sender_id);
+      });
+
+    // function(err, contacts) {
+    //   if (err) next(err);
+    //   console.log('contacts:', contacts);
+    //   res.render('pages/contact', {
+    //     contacts: contacts
+    //   });
+    // });
   },
 
   establish_rs: function(req, res, next) {
     var rs = new Rs(req.body);
+    console.log(req.body);
     rs.save (function(err) {
       if (err) {
         return next(err);

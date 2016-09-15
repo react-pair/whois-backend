@@ -2,12 +2,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var RsSchema = new Schema({
-  sender_id: [
+  receiver_id: [
     {
       type: mongoose.Schema.Types.ObjectId, ref: 'User'
     }
   ],
-  receiver_id: [
+  sender_id: [
     {
       type: mongoose.Schema.Types.ObjectId, ref: 'User'
     }
