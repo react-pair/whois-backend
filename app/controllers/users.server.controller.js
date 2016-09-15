@@ -1,4 +1,5 @@
 var User = require('mongoose').model('User');
+var Rs = require('mongoose').model('Rs');
 var cloudinary = require('cloudinary');
 
 var self = module.exports = {
@@ -137,7 +138,7 @@ var self = module.exports = {
       if(!user) {
         res.redirect('/contacts/' + req.session.user._id);
       } else {
-        res.render('pages/usersummary', {
+        res.render('pages/search', {
           receiver_id: user.id,
           name: user.displayName,
           email: user.email,

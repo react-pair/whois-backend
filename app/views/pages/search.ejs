@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+    <div class="container m-t-md">
+
+      <form method="POST" action="/search">
+        <div style="margin-bottom: 25px" class="input-group">
+            <input id="email" type="text" class="form-control" name="email" value="" placeholder="Please enter a user's email address">
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+                <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>Search</button>
+            </div>
+      </form>
+        <!-- First row -->
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <!-- Card -->
+                <% include ../partials/rs1Contact %>
+</body>
+
+</html>
