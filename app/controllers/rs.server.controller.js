@@ -11,8 +11,8 @@ module.exports = {
       res.render('pages/requests', {
         requests: userObjects
       });
-      console.log('userobjects[0] is ', userObjects[0]);
-      console.log('requests:', userObjects[0].sender_id[0].displayName);
+      // console.log('userobjects[0] is ', userObjects[0]);
+      // console.log('requests:', userObjects[0].sender_id[0].displayName);
     });
   },
 
@@ -39,6 +39,15 @@ module.exports = {
   },
 
   accept_request: function(req, res, next) {
+    console.log('reqboddddddy:', req.body);
+    Rs.findByIdAndUpdate(req.body._id, req.body, {new: true}, function(err ,user) {
+      if (err) {
+        return next(err);
+      } else {
+        console.log('friendship accepted');
+        res.redirect('/requests/' + req.session.user._id);
+      }
+    });
 
   }
 

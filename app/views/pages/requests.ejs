@@ -5,12 +5,11 @@
     <li>
       <%= requests[i].sender_id[j].displayName %>
       <%= requests[i].sender_id[j].position %>
-          <form href="/accept/:user_id" class="" action="index.html" method="post">
-            <input type="hidden" name="rs_type" value=2>
-            <button id="btn-edit" class="btn btn-default btn-xs glyphicon glyphicon-resize-small"><i class="icon-hand-right" style="background-color: transparent; margin-bottom:10px;"></i></button>
-          </form>
-
-      
+      <form id="acceptform" class="form-horizontal" action="/accept/<%= requests[i]._id %>?_method=PUT" method="POST">
+        <input type="hidden" name="_id" value="<%= requests[i]._id %>">
+        <input type="hidden" name="rs_type" value=2>
+        <button id="btn-edit" class="btn btn-default btn-xs glyphicon glyphicon-resize-small"><i class="icon-hand-right" style="background-color: transparent; margin-bottom:10px;"></i></button>
+      </form>
     </li>
   <% } %>
 <% } %>
