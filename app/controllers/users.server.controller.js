@@ -129,10 +129,6 @@ var self = module.exports = {
   },
 
   search_user: function(req, res) {
-
-
-
-
     var search_email = req.body.email;
     User.findOne({ email: search_email }, function(err, user) {
       if(err) {
@@ -143,8 +139,15 @@ var self = module.exports = {
         res.redirect('/contacts/' + req.session.user._id);
       } else {
 
-        Rs.find({receiver_id: req.session.user.id || sender_id : req.session.user.id }, function(err, relationship){
-
+        Rs.find({
+          $or: [
+            { $and: [{receiver_id: req.session.user.id},{sender_id: user.id}] },
+            { $and: [{receiver_id: user.id},{sender_id: req.session.user.id}] }
+          ]
+        }).populate('receiver_id sender_id')
+          .exec(function(err, relationships) {
+            if(err) next(err);
+            console.log('relationships: ', relationships);
           res.render('pages/search', {
             receiver_id: user.id,
             name: user.displayName,
@@ -152,12 +155,9 @@ var self = module.exports = {
             contact: user.contactNum,
             position: user.position,
             sender_id: req.session.user._id,
-            relationship: relationship
+            relationships: relationships
           });
-
-
-        })
-
+        });
       }
     });
   }
