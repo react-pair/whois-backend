@@ -105,7 +105,7 @@ var self = module.exports = {
         req.files.profilePic.path, function(error, result){
           if (error) next(error);
 
-          // user.profilePic = result.secure_url;
+          user.profilePic = result.secure_url;
 
           user.save(function(err){
             if(err) return next(err);
