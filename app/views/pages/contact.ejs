@@ -32,7 +32,8 @@
                 </div>
                 <div class="row">
                   <div class="col-xs-3">
-                      <form action="#" method="POST" id="deleteform" class="form-horizontal " role="form">
+                      <form action="/unfriend/<%= friends[i]._id %>?_method=DELETE" method="POST" id="deleteform" class="form-horizontal " role="form">
+                        <input type="hidden" name="_id" value="<%= contacts[i]._id %>">
                         <button id="btn-delete" type="submit" class="btn btn-default btn-xs glyphicon glyphicon-trash" style="margin-bottom:10px;"><i class="icon-hand-right"></i></button>
                       </form>
                   </div>
@@ -52,7 +53,7 @@
                       <div class="col-xs-6 pull-left">
                         <div class="col-xs-5 col-xs-offset-1 pull-right">
                           <a href="#">
-                              <button id="btn-list" class="btn btn-default btn-xs glyphicon glyphicon-list-alt"><i class="icon-hand-right" style="background-color: transparent; margin-bottom:10px;"></i></button>
+                            <button id="btn-list" class="btn btn-default btn-xs glyphicon glyphicon-list-alt"><i class="icon-hand-right" style="background-color: transparent; margin-bottom:10px;"></i></button>
                           </a>
                         </div>
                       </div>

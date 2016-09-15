@@ -114,24 +114,11 @@ var self = module.exports = {
           });
         }
       );
-
-    })
-
-
-
-    // User.findByIdAndUpdate(req.session.user.id, req.body, {new: true}, function(err ,user) {
-    //   if (err) {
-    //     return next(err);
-    //   } else {
-    //     req.session.user = user;
-    //     console.log('session updated');
-    //     res.redirect('/users/' + user._id);
-    //   }
-    // });
+    });
   },
 
   delete_account: function(req, res, next) {
-    User.remove({_id:req.session.user.id}, function(err) {
+    User.remove({_id: req.session.user.id}, function(err) {
       if (err) {
         return next(err);
       } else {
