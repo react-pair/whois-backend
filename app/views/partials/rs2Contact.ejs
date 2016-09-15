@@ -1,5 +1,19 @@
-<div class="well">
+<div class="col-xs-12 col-sm-8 col-md-6 col-lg-5 col-lg-offset-4">
+<div class="card">
+
   <div class="row">
+    <div class="col-xs-12 col-sm-12 col-sm-offset-3  col-md-9">
+        <form action="/unfriend/<%= friends[i]._id %>?_method=DELETE" method="POST" id="deleteform" class="form-horizontal " role="form">
+          <input type="hidden" name="_id" value="<%= contacts[i]._id %>">
+          <button id="btn-delete" type="submit" class="btn btn-default btn-xs glyphicon glyphicon-trash" style="margin-bottom:10px;"><i class="icon-hand-right"></i></button>
+        </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+
+
     <div class="col-xs-6 ">
       <img class=" img-responsive" src="..." alt="Card image cap" style="height: 100px; width: 100px; border-radius:50%; background-color:rgba(70,130,180,0.5); margin-bottom:10px;">
       <hr>
@@ -10,16 +24,10 @@
           Position: <%= friends[i].position %>
         </p>
       </div>
+    </div>
+
       <div class="row">
-        <div class="col-xs-3">
-            <form action="/unfriend/<%= friends[i]._id %>?_method=DELETE" method="POST" id="deleteform" class="form-horizontal " role="form">
-              <input type="hidden" name="_id" value="<%= contacts[i]._id %>">
-              <button id="btn-delete" type="submit" class="btn btn-default btn-xs glyphicon glyphicon-trash" style="margin-bottom:10px;"><i class="icon-hand-right"></i></button>
-            </form>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-6 pull-left">
+        <div class="col-xs-12 pull-left">
           <img class="img-responsive" src="..." alt="" style="height: 100px; width: 180px; margin-bottom:10px; margin-left: -20px; background-color:rgba(70,130,180,0.5)" />
           <hr class="hr-left">
           <div class="card-block">
@@ -28,18 +36,28 @@
             </br>
               Email: <%= friends[i].email %>
             </p>
-          </div>
-          <div class="row">
-            <div class="col-xs-6 pull-left">
-              <div class="col-xs-5 col-xs-offset-1 pull-right">
+
+              <div class="col-xs-3 col-xs-offset-4 pull-right" style="margin-top:-45px">
                 <a href="#">
-                  <button id="btn-list" class="btn btn-default btn-xs glyphicon glyphicon-list-alt"><i class="icon-hand-right" style="background-color: transparent; margin-bottom:10px;"></i></button>
+                  <button id="btn-list" class="btn btn-default btn-xs glyphicon glyphicon-list-alt"><i class="icon-hand-right" style="background-color: transparent;"></i></button>
                 </a>
               </div>
-            </div>
+
           </div>
+
+
+
+
+
+
+
+
+
+
         </div>
       </div>
     </div>
+    </div>
   </div>
+</div>
 </div>

@@ -80,7 +80,9 @@ h1{
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
 }
-
+.form-group{
+  margin-top: 0;
+}
 .btn-circle {
   width: 80px;
   height: 80px;
