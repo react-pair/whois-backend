@@ -31,7 +31,6 @@ module.exports = function() {
 
   app.use(bodyParser.json());
 
-
   app.use(session({
     saveUninitialized: true,
     resave: true,
@@ -44,7 +43,7 @@ module.exports = function() {
     cloud_name: config.CLOUDINARY_NAME,
     api_key: config.CLOUDINARY_KEY,
     api_secret: config.CLOUDINARY_SECRET
-  })
+  });
 
 
   app.set('views', './app/views');

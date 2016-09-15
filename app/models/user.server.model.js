@@ -41,8 +41,6 @@ var UserSchema = new Schema({
   }
 });
 
-
-
 UserSchema.set('toJSON', {
   getters: true,
   virtuals: true

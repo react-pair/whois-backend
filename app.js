@@ -1,5 +1,6 @@
 var express = require('./config/express');
 var mongoose = require('./config/mongoose');
+var seeder = require('./config/mongoose-seed');
 // mongoose.connect('mongodb://localhost/whoisDB');
 // require('./models/user.server.model');
 
