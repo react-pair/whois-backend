@@ -2,81 +2,70 @@
 <html>
 
 <head>
-    <% include ../partials/head %>
+  <% include ../partials/head %>
 </head>
-
 <body>
-
-    <header>
-        <% include ../partials/header %>
-    </header>
-    <div class="container m-t-md">
-      <div class="row">
-        <div class="col-xs-12">
-            <% include ../partials/search %>
-        </div>
-
+  <header>
+    <% include ../partials/header %>
+  </header>
+  <div class="container m-t-md">
+    <div class="row">
+      <div class="col-xs-12">
+          <% include ../partials/search %>
       </div>
-
-
-        <!-- First row -->
-        <div class="row">
-            <div class="col-xs-12 col-md-4">
-                <!-- Card -->
-                <div class="well">
-                    <div class="row">
-                        <div class="col-xs-6 ">
-                            <img class=" img-responsive" src="..." alt="Card image cap" style="height: 100px; width: 100px; border-radius:50%; background-color:rgba(70,130,180,0.5); margin-bottom:10px;">
-                            <hr>
-                            <div class="card-block">
-                                <p class="card-text">
-                                    Name:
-                                    <%= name %>
-                                        </br>
-                                        Position:
-                                        <%= position %>
-                                </p>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <form action="/delete/<%= id %>?_method=DELETE" method="POST" id="deleteform" class="form-horizontal " role="form">
-                                        <button id="btn-delete" type="submit" class="btn btn-default btn-xs glyphicon glyphicon-trash" style="margin-bottom:10px;"><i class="icon-hand-right"></i></button>
-                                    </form>
-                                </div>
-                                <div class="col-xs-3 pull-left">
-                                    <a href="/edit/<%= id %>">
-                                        <button id="btn-edit" class="btn btn-default btn-xs glyphicon glyphicon-cog"><i class="icon-hand-right" style="background-color: transparent; margin-bottom:10px;"></i></button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-6 pull-left">
-                                <img class="img-responsive" src="..." alt="" style="height: 100px; width: 180px; margin-bottom:10px; margin-left: -20px; background-color:rgba(70,130,180,0.5)" />
-                                <hr class="hr-left">
-                                <div class="card-block">
-                                    <p class="card-text">
-                                        Contact:
-                                        <%= contact %>
-                                            </br>
-                                            Email:
-                                            <%= email %>
-                                                </br>
-                                    </p>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-6 pull-left">
-                                        <div class="col-xs-5 col-xs-offset-1 pull-right">
-                                            <a href="/contacts/<%= id %>">
-                                                <button id="btn-edit" class="btn btn-default btn-xs glyphicon glyphicon-list-alt"><i class="icon-hand-right" style="background-color: transparent; margin-bottom:10px;"></i></button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    </div>
+    <!-- First row -->
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <% for (var i = 0; i < friends.length; i ++) { %>
+          <div class="well">
+            <div class="row">
+              <div class="col-xs-6 ">
+                <img class=" img-responsive" src="..." alt="Card image cap" style="height: 100px; width: 100px; border-radius:50%; background-color:rgba(70,130,180,0.5); margin-bottom:10px;">
+                <hr>
+                <div class="card-block">
+                  <p class="card-text">
+                    Name: <%= friends[i].displayName %>
+                  </br>
+                    Position: <%= friends[i].position %>
+                  </p>
                 </div>
+                <div class="row">
+                  <div class="col-xs-3">
+                      <form action="#" method="POST" id="deleteform" class="form-horizontal " role="form">
+                        <button id="btn-delete" type="submit" class="btn btn-default btn-xs glyphicon glyphicon-trash" style="margin-bottom:10px;"><i class="icon-hand-right"></i></button>
+                      </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6 pull-left">
+                    <img class="img-responsive" src="..." alt="" style="height: 100px; width: 180px; margin-bottom:10px; margin-left: -20px; background-color:rgba(70,130,180,0.5)" />
+                    <hr class="hr-left">
+                    <div class="card-block">
+                      <p class="card-text">
+                        Contact: <%= friends[i].contactNum %>
+                      </br>
+                        Email: <%= friends[i].email %>
+                      </p>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 pull-left">
+                        <div class="col-xs-5 col-xs-offset-1 pull-right">
+                          <a href="#">
+                              <button id="btn-list" class="btn btn-default btn-xs glyphicon glyphicon-list-alt"><i class="icon-hand-right" style="background-color: transparent; margin-bottom:10px;"></i></button>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

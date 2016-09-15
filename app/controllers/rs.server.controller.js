@@ -27,18 +27,24 @@ module.exports = {
     }).populate('receiver_id sender_id')
       .exec(function(err, contacts) {
         if(err) next(err);
+
         console.log('contacts: ', contacts);
         console.log('receiver_id_obj: ', contacts[0].receiver_id);
         console.log('sender_id_obj: ', contacts[0].sender_id);
+        var friendsArray = contacts.map(function(item){
+          if (user._id === item.sender_id[0]._id) {
+            console.log('yes');
+            return item.receiver_id[0];
+          } else {
+            console.log('no');
+            return item.sender_id[0];
+          }
+        });
+        console.log('friends: ', friendsArray);
+        res.render('pages/contact',{
+          friends: friendsArray
+        });
       });
-
-    // function(err, contacts) {
-    //   if (err) next(err);
-    //   console.log('contacts:', contacts);
-    //   res.render('pages/contact', {
-    //     contacts: contacts
-    //   });
-    // });
   },
 
   establish_rs: function(req, res, next) {
@@ -63,7 +69,6 @@ module.exports = {
         res.redirect('/requests/' + req.session.user._id);
       }
     });
-
   }
 
 };
