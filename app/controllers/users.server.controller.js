@@ -129,6 +129,10 @@ var self = module.exports = {
   },
 
   search_user: function(req, res) {
+
+
+
+
     var search_email = req.body.email;
     User.findOne({ email: search_email }, function(err, user) {
       if(err) {
@@ -138,14 +142,22 @@ var self = module.exports = {
       if(!user) {
         res.redirect('/contacts/' + req.session.user._id);
       } else {
-        res.render('pages/search', {
-          receiver_id: user.id,
-          name: user.displayName,
-          email: user.email,
-          contact: user.contactNum,
-          position: user.position,
-          sender_id: req.session.user._id
-        });
+
+        Rs.find({receiver_id: req.session.user.id || sender_id : req.session.user.id }, function(err, relationship){
+
+          res.render('pages/search', {
+            receiver_id: user.id,
+            name: user.displayName,
+            email: user.email,
+            contact: user.contactNum,
+            position: user.position,
+            sender_id: req.session.user._id,
+            relationship: relationship
+          });
+
+
+        })
+
       }
     });
   }
