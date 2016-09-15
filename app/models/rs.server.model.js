@@ -2,14 +2,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var RsSchema = new Schema({
-  user1_id: [
+  receiver_id: [
     {
-      type: Schema.Type.ObjectId, ref: 'User'
+      type: mongoose.Schema.Types.ObjectId, ref: 'User'
     }
   ],
-  user2_id: [
+  sender_id: [
     {
-      type: Schema.Type.ObjectId, ref: 'User'
+      type: mongoose.Schema.Types.ObjectId, ref: 'User'
     }
   ],
   rs_type: {

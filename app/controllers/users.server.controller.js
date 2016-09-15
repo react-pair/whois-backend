@@ -6,7 +6,6 @@ var self = module.exports = {
   checkUserExists: function(req, res, email, password){
     User.findOne({email: email, password: password}, function(err, user) {
       if(err) {
-        console.log(err);
         res.redirect('/');
         return res.status(500).send();
       }
@@ -22,7 +21,7 @@ var self = module.exports = {
   },
 
   render_signup_form: function(req, res) {
-    res.render('../views/pages/signup', {
+    res.render('pages/signup', {
       title: 'Signup Here!'
     });
   },
@@ -137,6 +136,28 @@ var self = module.exports = {
         return next(err);
       } else {
         res.redirect('/');
+      }
+    });
+  },
+
+  search_user: function(req, res) {
+    var search_email = req.body.email;
+    User.findOne({ email: search_email }, function(err, user) {
+      if(err) {
+        res.redirect('/contacts/' + req.session.user._id);
+        return res.status(500).send();
+      }
+      if(!user) {
+        res.redirect('/contacts/' + req.session.user._id);
+      } else {
+        res.render('pages/usersummary', {
+          receiver_id: user.id,
+          name: user.displayName,
+          email: user.email,
+          contact: user.contactNum,
+          position: user.position,
+          sender_id: req.session.user._id
+        });
       }
     });
   }

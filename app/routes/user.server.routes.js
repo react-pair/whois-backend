@@ -29,10 +29,11 @@ module.exports = function(app) {
   app.route('/delete/:user_id')
      .delete(usersController.delete_account);
 
- };
+  // search for user
+  app.route('/search')
+     .post(usersController.search_user);
 
- // primary friends list of individual user
- // app.get('/:user_id/contacts', usersController.show_pri_friends);
+ };
 
  // invitation page
  // app.route('/:user_id/invite')
