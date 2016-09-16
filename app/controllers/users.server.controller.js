@@ -138,13 +138,24 @@ var self = module.exports = {
       if(!user) {
         res.redirect('/contacts/' + req.session.user._id);
       } else {
-        res.render('pages/search', {
-          receiver_id: user.id,
-          name: user.displayName,
-          email: user.email,
-          contact: user.contactNum,
-          position: user.position,
-          sender_id: req.session.user._id
+        Rs.find({
+          $or: [
+            { $and: [{receiver_id: req.session.user.id},{sender_id: user.id}] },
+            { $and: [{receiver_id: user.id},{sender_id: req.session.user.id}] }
+          ]
+        }).populate('receiver_id sender_id')
+          .exec(function(err, relationships) {
+            if(err) next(err);
+            console.log('relationships: ', relationships);
+          res.render('pages/search', {
+            receiver_id: user.id,
+            name: user.displayName,
+            email: user.email,
+            contact: user.contactNum,
+            position: user.position,
+            sender_id: req.session.user._id,
+            relationships: relationships
+          });
         });
       }
     });
